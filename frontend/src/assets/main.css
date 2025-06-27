@@ -1,0 +1,43 @@
+@import './base.css';
+
+#app {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fullscreen-view {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    /* Mantén esto si deseas centrar algo globalmente, aunque no es necesario */
+    place-items: initial;
+  }
+
+  #app {
+    display: block;
+    padding: 0;
+  }
+}
+

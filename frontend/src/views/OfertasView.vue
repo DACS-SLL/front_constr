@@ -1,5 +1,11 @@
 <template>
   <v-container fluid class="pa-6 bg-grey-lighten-4">
+    <!-- Botón de regreso al home -->
+    <v-btn color="secondary" variant="tonal" @click="router.push('/dashboard')" class="mb-4">
+      <v-icon start>mdi-arrow-left</v-icon>
+      Volver al Inicio
+    </v-btn>
+
     <h2 class="mb-6">Explorar Ofertas Laborales</h2>
 
     <OfertasFiltros v-model="filtros" :loading="loading" @buscar="cargarOfertas" />
@@ -47,7 +53,7 @@ const cargarOfertas = async () => {
     const params = {
       ...(filtros.value.ubicacion && { ubicacion: filtros.value.ubicacion }),
       ...(filtros.value.estado && { estado: filtros.value.estado }),
-      ...(filtros.value.empresa_id && { empresa_id: filtros.value.empresa_id }),
+      ...(filtros.value.nombre_empresa && { nombre_empresa: filtros.value.nombre_empresa }),
       skip,
       limit
     }
@@ -69,7 +75,7 @@ const cargarOfertas = async () => {
 const filtros = ref({
   ubicacion: '',
   estado: '',
-  empresa_id: ''
+  nombre_empresa: ''
 })
 
 

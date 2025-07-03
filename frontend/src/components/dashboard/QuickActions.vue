@@ -48,19 +48,19 @@ const acciones = computed(() => {
     case 'postulante':
       return [
         { label: 'Ver Ofertas', route: '/ofertas', color: 'primary' },
-        { label: 'Mis Postulaciones', route: '/postulaciones', color: 'indigo' },
-        { label: 'Subir Currículum', route: '/perfil', color: 'teal' }
+        { label: 'Mis Postulaciones', route: '/mis-postulaciones', color: 'indigo' },
+        { label: 'Editar Perfil', route: '/perfil', color: 'teal' }
       ]
     case 'empleador':
       return [
-        { label: 'Publicar Oferta', route: '/ofertas/nueva', color: 'primary' },
+        { label: 'Publicar Oferta', route: '/nueva-oferta', color: 'primary' },
         { label: 'Ver Postulantes', route: '/postulantes', color: 'deep-purple' },
         { label: 'Entrevistas', route: '/entrevistas', color: 'success' }
       ]
     case 'admin':
       return [
-        { label: 'Gestionar Usuarios', route: '/admin/usuarios', color: 'primary' },
-        { label: 'Estadísticas', route: '/admin/stats', color: 'orange' }
+        { label: 'Gestionar Usuarios', route: '/admin/usuarios/', color: 'primary' },
+        { label: 'Informes', route: '/admin/reportes', color: 'orange' }
       ]
     default:
       return []

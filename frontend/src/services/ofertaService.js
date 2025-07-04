@@ -28,18 +28,12 @@ export const guardarOferta = (data) => {
   })
 }
 
-
-// Actualizar estado u otros campos de una oferta
 export async function actualizarOferta(id, datos) {
-  return await fetch(`api/ofertas/${id}`, {
-    method: 'PUT',
+  const token = localStorage.getItem('token')
+  const response = await api.put(`/ofertas/${id}`, datos, {
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    },
-    body: JSON.stringify(datos)
-  }).then(res => {
-    if (!res.ok) throw new Error('Error al actualizar oferta')
-    return res.json()
+      Authorization: `Bearer ${token}`
+    }
   })
+  return response.data
 }

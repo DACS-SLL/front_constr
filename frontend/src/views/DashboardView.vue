@@ -64,6 +64,7 @@ import RecentActivity from '@/components/dashboard/RecentActivity.vue'
 import RecentTable from '@/components/dashboard/RecentTable.vue'
 import QuickActions from '@/components/dashboard/QuickActions.vue'
 import { fetchResumen } from '@/services/dashboardService'
+import { consoleError } from 'vuetify/lib/util'
 
 const summary = ref({})
 const user = ref(JSON.parse(localStorage.getItem('user')))
@@ -71,6 +72,7 @@ const user = ref(JSON.parse(localStorage.getItem('user')))
 onMounted(async () => {
   try {
   const data = await fetchResumen(user.value.rol.nombre.toLowerCase())
+  console.log('Datos del resumen:', data)
   summary.value = data || {}
     console.log('Resumen cargado:', summary.value)
   } catch (error) {

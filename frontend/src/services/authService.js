@@ -30,7 +30,7 @@ export function getToken() {
 
 export async function fetchCurrentUser() {
   const token = getToken()
-  return axios.get('http://localhost:8000/auth/me', {
+  return axios.get('https://backconstr-production.up.railway.app/auth/me', {
     headers: { Authorization: `Bearer ${token}` }
   })
 }

@@ -21,12 +21,13 @@ export const getOfertaById = (id) => {
 // Crear una nueva oferta
 export const guardarOferta = (data) => {
   const token = localStorage.getItem('token')
-  return axios.post('/api/ofertas/', data, {
+  return api.post('/ofertas/', data, {
     headers: {
       Authorization: `Bearer ${token}`
     }
   })
 }
+
 
 // Actualizar estado u otros campos de una oferta
 export async function actualizarOferta(id, datos) {

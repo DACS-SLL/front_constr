@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = 'http://localhost:8000/auth'
+const API = 'https://backconstr-production.up.railway.app/auth'
 
 export async function login(email, password) {
   const params = new URLSearchParams()

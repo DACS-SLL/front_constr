@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000', // Cambia a tu URL de producción si aplica
+  baseURL: 'https://backconstr-production.up.railway.app', // Cambia a tu URL de producción si aplica
   withCredentials: true
 })
 

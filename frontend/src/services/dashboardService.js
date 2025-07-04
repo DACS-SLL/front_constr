@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getToken } from './authService'
 import api from './apiService'
 
-const API = 'http://localhost:8000/dashboard'
+const API = 'https://backconstr-production.up.railway.app/dashboard'
 
 
 export const fetchResumen = (rol) => {

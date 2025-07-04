@@ -101,6 +101,7 @@ import { ref, onMounted, watch } from 'vue'
 import { fetchPostulacionesPorOferta } from '@/services/postulacionService'
 import { fetchOfertas, actualizarOferta } from '@/services/ofertaService'
 import { useRouter } from 'vue-router'
+import api from '@/services/apiService'
 
 const router = useRouter()
 const ofertas = ref([])
@@ -166,13 +167,12 @@ const actualizarEstadoOferta = async () => {
 
 const cambiarEstadoPostulacion = async (postulacion) => {
   try {
-    await fetch(`https://backconstr-production.up.railway.app/postulaciones/${postulacion.id}`, {
-    method: 'PATCH',
+    await api.patch(`/postulaciones/${postulacion.id}`, {
+    estado: postulacion.estado
+    }, {
     headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`
-    },
-    body: JSON.stringify({ estado: postulacion.estado })
+    }
     })
     alert('Estado actualizado correctamente.')
   } catch (err) {
@@ -196,13 +196,10 @@ const guardarEvaluacion = async () => {
       resultado: resultadoEvaluacion.value
     }
 
-    await fetch('https://backconstr-production.up.railway.app/evaluaciones', {
-    method: 'POST',
+    await api.post('/evaluaciones', payload, {
     headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`
-    },
-    body: JSON.stringify(payload)
+    }
     })
 
     alert('Evaluación guardada correctamente.')

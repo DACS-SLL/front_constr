@@ -1,12 +1,4 @@
-// lib/axios.js
-import axios from 'axios'
-
-const api = axios.create({
-  baseURL: 'https://backconstr-production.up.railway.app', // Cambia a tu URL de producción si aplica
-  withCredentials: true
-})
-
-export default api
+import api from './apiService'
 
 // Obtener todas las ofertas (con filtros si es necesario)
 export const fetchOfertas = (params = {}) => {
@@ -36,4 +28,14 @@ export async function actualizarOferta(id, datos) {
     }
   })
   return response.data
+}
+
+
+export const fetchPostulacionesPorOferta = (ofertaId) => {
+  return api.get('/postulaciones', {
+    params: { oferta_id: ofertaId },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  })
 }

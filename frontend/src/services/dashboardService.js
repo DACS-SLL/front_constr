@@ -1,9 +1,8 @@
 import api from './apiService'
 
 // Obtener resumen general del dashboard
-export const fetchResumen = async (rol) => {
-  const res = await api.get('/dashboard/resumen', { params: { rol } })
-  return res.data
+export const fetchResumen = (rol) => {
+  return api.get('/dashboard/resumen', { params: { rol } })
 }
 
 // Obtener actividad reciente

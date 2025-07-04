@@ -2,20 +2,24 @@ import api from './apiService'
 
 // Obtener resumen general del dashboard
 export const fetchResumen = (rol) => {
-  return api.get('/dashboard/resumen', { params: { rol } })
+  const res = api.get('/dashboard/resumen', { params: { rol } })
+  return res.data
 }
 
 // Obtener actividad reciente
 export const fetchActividad = (rol) => {
-  return api.get('/dashboard/actividad', { params: { rol } })
+  const res = api.get('/dashboard/actividad', { params: { rol } })
+  return res.data
 }
 
 // Obtener datos para gráficos
 export const fetchChartData = (rol) => {
-  return api.get('/dashboard/chart', { params: { rol } })
+  const res = api.get('/dashboard/chart', { params: { rol } })
+  return res.data
 }
 
 // Obtener datos de tabla reciente
 export const fetchTablaReciente = (rol) => {
-  return api.get('/dashboard/tabla-reciente', { params: { rol } })
+  const res = api.get('/dashboard/tabla-reciente', { params: { rol } })
+  return res.data
 }

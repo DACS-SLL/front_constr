@@ -2,7 +2,9 @@ import axios from 'axios'
 
 const api = axios.create({
   baseURL: 'https://backconstr-production.up.railway.app',
+  withCredentials: true
 })
+
 
 // Interceptor para añadir token
 api.interceptors.request.use(config => {

@@ -2,9 +2,20 @@ import api from './apiService'
 
 // Obtener resumen general del dashboard
 export const fetchResumen = async (rol) => {
-  const res = await api.get('/dashboard/resumen', { params: { rol } })
-  return res.data
+  try {
+    const res = await api.get('/dashboard/resumen', { params: { rol } })
+    if (res?.data) {
+      return res.data
+    } else {
+      console.warn("Respuesta vacía del resumen.")
+      return {}
+    }
+  } catch (error) {
+    console.error("Error al obtener resumen:", error.response?.data || error.message)
+    throw error
+  }
 }
+
 
 // Obtener actividad reciente
 export const fetchActividad = async (rol) => {

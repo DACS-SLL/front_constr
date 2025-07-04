@@ -2,7 +2,12 @@
   <v-container fluid class="pa-6 bg-grey-lighten-4">
     <WelcomeBanner />
 
-    <v-row class="mb-4" dense style="overflow-x: auto; flex-wrap: nowrap;">
+    <v-row
+      class="mb-4"
+      dense
+      style="overflow-x: auto; flex-wrap: nowrap;"
+      v-if="Object.keys(summary).length"
+    >
       <!-- Postulante -->
       <template v-if="user.rol.nombre === 'postulante'">
         <v-col cols="auto" class="mr-4" style="flex: 0 0 auto;">
@@ -64,20 +69,18 @@ import RecentActivity from '@/components/dashboard/RecentActivity.vue'
 import RecentTable from '@/components/dashboard/RecentTable.vue'
 import QuickActions from '@/components/dashboard/QuickActions.vue'
 import { fetchResumen } from '@/services/dashboardService'
-import { consoleError } from 'vuetify/lib/util'
 
 const summary = ref({})
 const user = ref(JSON.parse(localStorage.getItem('user')))
 
 onMounted(async () => {
   try {
-  const data = await fetchResumen(user.value.rol.nombre.toLowerCase())
-  console.log('Datos del resumen:', data)
-  summary.value = data || {}
+    const data = await fetchResumen(user.value.rol.nombre.toLowerCase())
+    console.log('Datos del resumen:', data)
+    summary.value = data || {}
     console.log('Resumen cargado:', summary.value)
   } catch (error) {
     console.error('Error al cargar resumen:', error)
   }
 })
 </script>
-

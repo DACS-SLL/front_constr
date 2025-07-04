@@ -60,7 +60,6 @@
 import { ref, onMounted } from 'vue'
 import WelcomeBanner from '@/components/dashboard/WelcomeBanner.vue'
 import SummaryCard from '@/components/dashboard/SummaryCard.vue'
-import ChartSection from '@/components/dashboard/ChartSection.vue'
 import RecentActivity from '@/components/dashboard/RecentActivity.vue'
 import RecentTable from '@/components/dashboard/RecentTable.vue'
 import QuickActions from '@/components/dashboard/QuickActions.vue'

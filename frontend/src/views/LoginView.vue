@@ -45,7 +45,7 @@ const handleLogin = async ({ email, password, setLoading }) => {
 
     console.log('Llamando a /api/auth/me con token:', `${res.token_type} ${res.access_token}`)
 
-    const userRes = await fetch('/api/auth/me', {
+    const userRes = await fetch('https://backconstr-production.up.railway.app/auth/me', {
       headers: {
         Authorization: `${res.token_type} ${res.access_token}`
       }

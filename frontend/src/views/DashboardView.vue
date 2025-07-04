@@ -2,11 +2,15 @@
   <v-container fluid class="pa-6 bg-grey-lighten-4">
     <WelcomeBanner />
 
+    <v-alert v-if="summaryError" type="error" class="mb-4">
+      {{ summaryError }}
+    </v-alert>
+
     <v-row
       class="mb-4"
       dense
       style="overflow-x: auto; flex-wrap: nowrap;"
-      v-if="Object.keys(summary).length"
+      v-if="Object.keys(summary).length && !summaryError"
     >
       <!-- Postulante -->
       <template v-if="user.rol.nombre === 'postulante'">
@@ -71,15 +75,24 @@ import QuickActions from '@/components/dashboard/QuickActions.vue'
 import { fetchResumen } from '@/services/dashboardService'
 
 const summary = ref({})
+const summaryError = ref('')
 const user = ref(JSON.parse(localStorage.getItem('user')))
 
 onMounted(async () => {
   try {
     const data = await fetchResumen(user.value.rol.nombre.toLowerCase())
+    if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
+      summaryError.value = 'No se pudo cargar el resumen del dashboard.'
+      summary.value = {}
+    } else {
+      summary.value = data
+      summaryError.value = ''
+    }
     console.log('Datos del resumen:', data)
-    summary.value = data || {}
     console.log('Resumen cargado:', summary.value)
   } catch (error) {
+    summaryError.value = 'Error al cargar el resumen del dashboard.'
+    summary.value = {}
     console.error('Error al cargar resumen:', error)
   }
 })

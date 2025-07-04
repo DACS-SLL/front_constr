@@ -70,8 +70,8 @@ const user = ref(JSON.parse(localStorage.getItem('user')))
 
 onMounted(async () => {
   try {
-    const res = await fetchResumen(user.value.rol.nombre)
-    summary.value = data || {}
+  const data = await fetchResumen(user.value.rol.nombre.toLowerCase())
+  summary.value = data || {}
     console.log('Resumen cargado:', summary.value)
   } catch (error) {
     console.error('Error al cargar resumen:', error)

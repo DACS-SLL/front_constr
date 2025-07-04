@@ -166,13 +166,13 @@ const actualizarEstadoOferta = async () => {
 
 const cambiarEstadoPostulacion = async (postulacion) => {
   try {
-    await fetch(`/api/postulaciones/${postulacion.id}`, {
-      method: 'PATCH',
-      headers: {
+    await fetch(`https://backconstr-production.up.railway.app/postulaciones/${postulacion.id}`, {
+    method: 'PATCH',
+    headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify({ estado: postulacion.estado })
+    },
+    body: JSON.stringify({ estado: postulacion.estado })
     })
     alert('Estado actualizado correctamente.')
   } catch (err) {
@@ -196,13 +196,13 @@ const guardarEvaluacion = async () => {
       resultado: resultadoEvaluacion.value
     }
 
-    await fetch('/api/evaluaciones', {
-      method: 'POST',
-      headers: {
+    await fetch('https://backconstr-production.up.railway.app/evaluaciones', {
+    method: 'POST',
+    headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify(payload)
+    },
+    body: JSON.stringify(payload)
     })
 
     alert('Evaluación guardada correctamente.')

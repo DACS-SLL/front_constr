@@ -36,7 +36,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { getActividadReciente } from '@/services/dashboardService'
+import { fetchActividad } from '@/services/dashboardService'
 
 const actividad = ref([])
 const user = JSON.parse(localStorage.getItem('user'))
@@ -51,7 +51,7 @@ const formatFecha = (fechaIso) => {
 
 onMounted(async () => {
   try {
-    const data = await getActividadReciente(user.rol.nombre)
+    const data = await fetchActividad(user.rol.nombre)
     actividad.value = data
   } catch (err) {
     console.error('Error al cargar actividad reciente:', err)

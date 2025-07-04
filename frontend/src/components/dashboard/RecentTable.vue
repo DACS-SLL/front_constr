@@ -33,7 +33,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { getTablaReciente } from '@/services/dashboardService'
+import { fetchTablaReciente } from '@/services/dashboardService'
 
 const user = JSON.parse(localStorage.getItem('user'))
 const items = ref([])
@@ -41,7 +41,7 @@ const columnas = ref([])
 
 onMounted(async () => {
   try {
-    const data = await getTablaReciente(user.rol.nombre)
+    const data = await fetchTablaReciente(user.rol.nombre)
     items.value = data.items
     columnas.value = data.columnas
   } catch (err) {

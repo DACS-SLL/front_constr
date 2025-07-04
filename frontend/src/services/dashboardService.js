@@ -19,7 +19,3 @@ export const fetchChartData = async (rol) => {
 export const fetchTablaReciente = async (rol) => {
   return await api.get('/dashboard/tabla-reciente', { params: { rol } })
 }
-
-export const getActividadReciente = async (rol) => {
-  return await api.get('/dashboard/actividad', { params: { rol } })
-}

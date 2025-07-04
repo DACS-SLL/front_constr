@@ -1,5 +1,4 @@
-import api from './apiService'
-import axios from 'axios'
+import api from './apiService'  
 
 export const fetchMisPostulaciones = () => {
   const token = localStorage.getItem('token')
@@ -10,12 +9,9 @@ export const fetchMisPostulaciones = () => {
   })
 }
 
-// Obtener postulaciones de una oferta específica (con URL completa)
 export const fetchPostulacionesPorOferta = (ofertaId) => {
   const token = localStorage.getItem('token')
-  const baseURL = 'https://backconstr-production.up.railway.app'
-
-  return axios.get(`${baseURL}/postulaciones`, {
+  return api.get('/postulaciones', {
     params: { oferta_id: ofertaId },
     headers: {
       Authorization: `Bearer ${token}`

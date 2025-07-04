@@ -81,6 +81,8 @@ const user = ref(JSON.parse(localStorage.getItem('user')))
 onMounted(async () => {
   try {
     const data = await fetchResumen(user.value.rol.nombre.toLowerCase())
+    
+
     if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
       summaryError.value = 'No se pudo cargar el resumen del dashboard.'
       summary.value = {}
